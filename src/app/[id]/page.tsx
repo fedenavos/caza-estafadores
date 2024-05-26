@@ -18,10 +18,14 @@ export default function IdPage({params: {id}}: {params: {id: string}}) {
 
     formData.delete("image");
 
+    // Convierte FormData en un objeto simple
+    const entries = formData.entries();
+    const data = Object.fromEntries(entries);
+
     await kv.set(id, {
       id,
       image: url,
-      formData,
+      formData: data,
       location,
       exif,
       headers: Object.fromEntries(headers()),
