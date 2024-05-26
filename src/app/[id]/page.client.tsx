@@ -9,7 +9,7 @@ import {Input} from "@/components/ui/input";
 import {Label} from "@/components/ui/label";
 import {Button} from "@/components/ui/button";
 import {Checkbox} from "@/components/ui/checkbox";
-import demo from "@/assets/demo.webp";
+import demo from "@/assets/selfie-demo.webp";
 
 export default function IdPageClient({
   save,
@@ -25,8 +25,8 @@ export default function IdPageClient({
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-
-    const formData = new FormData(event.currentTarget);
+    const form = event.target as HTMLFormElement;
+    const formData = new FormData(form);
     const file = formData.get("image") as File;
     const exif = await ExifReader.load(file);
 
@@ -37,11 +37,23 @@ export default function IdPageClient({
     <form className="grid gap-6" onSubmit={handleSubmit}>
       <Label className="grid gap-2">
         <span>Monto a transferir</span>
-        <Input required max={30000} min={0} name="amount" placeholder="30000" type="number" />
+        <Input
+          required
+          max={30000}
+          min={0}
+          name="amount"
+          placeholder="30000"
+          type="number"
+        />
       </Label>
       <Label className="grid gap-2">
         <span>CVU / CBU / Alias</span>
-        <Input required name="destination" placeholder="TITA.TUPLA.BIOCA" type="text" />
+        <Input
+          required
+          name="destination"
+          placeholder="TITA.TUPLA.BIOCA"
+          type="text"
+        />
       </Label>
       <Label className="grid gap-2">
         <span>Imágen</span>
