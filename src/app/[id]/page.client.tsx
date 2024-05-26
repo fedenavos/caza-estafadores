@@ -37,23 +37,12 @@ export default function IdPageClient({
     <form className="grid gap-6" onSubmit={handleSubmit}>
       <Label className="grid gap-2">
         <span>Monto a transferir</span>
-        <Input
-          required
-          max={30000}
-          min={0}
-          name="amount"
-          placeholder="30000"
-          type="number"
-        />
+        <Input required max={30000} min={0} name="amount" placeholder="30000" type="number" />
+        <span className="text-xs">Máximo $150.000</span>
       </Label>
       <Label className="grid gap-2">
         <span>CVU / CBU / Alias</span>
-        <Input
-          required
-          name="destination"
-          placeholder="TITA.TUPLA.BIOCA"
-          type="text"
-        />
+        <Input required name="destination" placeholder="TITA.TUPLA.BIOCA" type="text" />
       </Label>
       <Label className="grid gap-2">
         <span>Imágen</span>
